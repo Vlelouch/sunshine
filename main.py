@@ -50,7 +50,7 @@ def getMessage():
 @server.route("/")
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url='https://your_heroku_project.com/' + API_KEY)
+    bot.set_webhook(url='https://mysterious-oasis-84536.herokuapp.com/' + API_KEY)
     return "!", 200
 
 
