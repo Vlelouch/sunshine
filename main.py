@@ -56,8 +56,9 @@ if __name__ == '__main__':
     # Run the bot
     updater.start_webhook(listen="0.0.0.0",
                           port=int(PORT),
-                          url_path=API_KEY)
-    updater.bot.setWebhook('https://mysterious-oasis-84536.herokuapp.com/' + API_KEY)
+                          url_path=API_KEY,
+                          webhook_url = 'https://mysterious-oasis-84536.herokuapp.com/' + API_KEY)
+
     updater.idle()
 
 
