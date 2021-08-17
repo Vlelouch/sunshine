@@ -4,7 +4,7 @@ from telegram.ext import *
 import responses
 PORT = int(os.environ.get('PORT', 5000)
 
-API_KEY = '1940733414:AAEffQ_4SFUVttv47qnwzkzLlQpFEGMDsVA'
+API_KEY = "1940733414:AAEffQ_4SFUVttv47qnwzkzLlQpFEGMDsVA"
 
 # Set up the logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
