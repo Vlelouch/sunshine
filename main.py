@@ -1,6 +1,8 @@
 import logging
+import os
 from telegram.ext import *
 import responses
+PORT = int(os.environ.get('PORT', 5000)
 
 API_KEY = '1940733414:AAEffQ_4SFUVttv47qnwzkzLlQpFEGMDsVA'
 
@@ -52,5 +54,10 @@ if __name__ == '__main__':
     dp.add_error_handler(error)
 
     # Run the bot
-    updater.start_polling(1.0)
+    updater.start_webhook(listen="0.0.0.0",
+                          port=int(PORT),
+                          url_path=API_KEY)
+    updater.bot.setWebhook('https://mysterious-oasis-84536.herokuapp.com/' + API_KEY)
     updater.idle()
+
+
