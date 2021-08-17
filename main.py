@@ -2,7 +2,7 @@ import logging
 import os
 from telegram.ext import *
 import responses
-PORT = int(os.environ.get('PORT', 5000)
+PORT = int(os.environ.get('PORT', 443))
 
 API_KEY = "1940733414:AAEffQ_4SFUVttv47qnwzkzLlQpFEGMDsVA"
 
