@@ -23,8 +23,11 @@ def get_response(message):
         process_message(message, ['bye', 'goodbye'], 'Goodbye!'),
         process_message(message, ['how', 'are', 'you'], 'I\'m doing fine thanks!'),
         process_message(message, ['your', 'name'], 'My name is Ishigami, nice to meet you!'),
-        process_message(message, ['help', 'me'], 'I will do my best to assist you!')
-        # Add more responses here
+        process_message(message, ['help', 'me'], 'I will do my best to assist you!'),
+        process_message(message, ['santhosh', 'yathi'], 'you gaaji boy!'),
+        process_message(message, ['vanakam', 'thala'], 'vanakam thala!')
+
+    # Add more responses here
     ]
 
     # Checks all of the response scores and returns the best matching response

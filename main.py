@@ -1,11 +1,8 @@
 import logging
 from telegram.ext import *
 import responses
-from flask import Flask, request
-import os
 
 API_KEY = '1940733414:AAEffQ_4SFUVttv47qnwzkzLlQpFEGMDsVA'
-server = Flask(__name__)
 
 # Set up the logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
@@ -39,20 +36,21 @@ def error(update, context):
 
 
 # Run the programme
-@server.route('/' + API_KEY, methods=['POST'])
-def getMessage():
-    json_string = request.get_data().decode('utf-8')
-    update = telebot.types.Update.de_json(json_string)
-    bot.process_new_updates([update])
-    return "!", 200
+if __name__ == '__main__':
+    updater = Updater(API_KEY, use_context=True)
+    dp = updater.dispatcher
 
+    # Commands
+    dp.add_handler(CommandHandler('start', start_command))
+    dp.add_handler(CommandHandler('help', help_command))
+    dp.add_handler(CommandHandler('custom', custom_command))
 
-@server.route("/")
-def webhook():
-    bot.remove_webhook()
-    bot.set_webhook(url='https://mysterious-oasis-84536.herokuapp.com/' + API_KEY)
-    return "!", 200
+    # Messages
+    dp.add_handler(MessageHandler(Filters.text, handle_message))
 
+    # Log all errors
+    dp.add_error_handler(error)
 
-if __name__ == "__main__":
-    server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
+    # Run the bot
+    updater.start_polling(1.0)
+    updater.idle()
